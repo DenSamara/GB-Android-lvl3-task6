@@ -385,8 +385,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private Bundle saveSQLite() {
-        DBHelper helper = new DBHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
+        SQLiteDatabase db = MainApp.getSqLiteDatabase();
 
         Date first = new Date();
         UserEntityMapper.saveAll(db, modelList);
@@ -401,8 +400,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private Bundle getAllSQLite() {
-        DBHelper helper = new DBHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
+        SQLiteDatabase db = MainApp.getSqLiteDatabase();
 
         Date first = new Date();
         List<SQLiteModel> tempList = UserEntityMapper.getAll(db);
@@ -415,8 +413,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private Bundle deleteAllSQLite() {
-        DBHelper helper = new DBHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
+        SQLiteDatabase db = MainApp.getSqLiteDatabase();
 
         Date first = new Date();
         int size = UserEntityMapper.clear(db);
