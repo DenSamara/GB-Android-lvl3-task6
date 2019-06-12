@@ -1,8 +1,8 @@
 package lesson5.rumpilstilstkin.ru.databaseex;
 
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
 
 @Database(entities = {Users.class}, version = 1)
