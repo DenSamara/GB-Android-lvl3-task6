@@ -1,19 +1,17 @@
 package lesson5.rumpilstilstkin.ru.databaseex;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.annotation.NonNull;
 
 
 @Entity
 public class Users {
-    private String login;
-
     @PrimaryKey
     @NonNull
     private String userId;
-
+    private String login;
     private String avatarUrl;
 
     Users(String login, @NonNull String userId, String avatarUrl){
@@ -22,12 +20,12 @@ public class Users {
         this.avatarUrl = avatarUrl;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
     public String getUserId() {
         return userId;
+    }
+
+    public String getLogin() {
+        return login;
     }
 
     public String getAvatarUrl() {

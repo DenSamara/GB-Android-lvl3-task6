@@ -199,7 +199,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .baseUrl("https://api.github.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-            Call<List<Model>> call = retrofit.create(Endpoints.class).loadUsers();
+            String lastID = modelList.size() < 1 ? "0" : modelList.get(modelList.size() - 1).getUserId();
+            Call<List<Model>> call = retrofit.create(Endpoints.class).loadUsers(lastID);
             downloadOneUrl(call);
         }
         else {
