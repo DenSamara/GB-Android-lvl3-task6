@@ -3,6 +3,7 @@ package lesson5.rumpilstilstkin.ru.databaseex;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -42,15 +43,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView mInfoTextView;
     private ProgressBar progressBar;
     Button btnLoad;
+
     Button btnSaveAllSugar;
     Button btnSelectAllSugar;
     Button btnDeleteAllSugar;
+
     Button btnSaveAllRealm;
     Button btnSelectAllRealm;
     Button btnDeleteAllRealm;
+
     Button btnSaveAllRoom;
     Button btnSelectAllRoom;
     Button btnDeleteAllRoom;
+
+    Button btnSaveAllSQLite;
+    Button btnSelectAllSQLite;
+    Button btnDeleteAllSQLite;
 
     List<Model> modelList = new ArrayList<>();
     Realm realm;
@@ -72,25 +80,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mInfoTextView = findViewById(R.id.tvLoad);
         progressBar = findViewById(R.id.progressBar);
         btnLoad = findViewById(R.id.btnLoad);
+
         btnSaveAllSugar = findViewById(R.id.btnSaveAllSugar);
         btnSelectAllSugar = findViewById(R.id.btnSelectAllSugar);
         btnDeleteAllSugar = findViewById(R.id.btnDeleteAllSugar);
+
         btnSaveAllRealm = findViewById(R.id.btnSaveAllRealm);
         btnSelectAllRealm = findViewById(R.id.btnSelectAllRealm);
         btnDeleteAllRealm = findViewById(R.id.btnDeleteAllRealm);
+
         btnSaveAllRoom = findViewById(R.id.btnSaveAllRoom);
         btnSelectAllRoom = findViewById(R.id.btnSelectAllRoom);
         btnDeleteAllRoom = findViewById(R.id.btnDeleteAllRoom);
+
+        btnSaveAllSQLite = findViewById(R.id.btnSaveAllSQLite);
+        btnSelectAllSQLite = findViewById(R.id.btnSelectAllSQLite);
+        btnDeleteAllSQLite = findViewById(R.id.btnDeleteAllSQLite);
+
         btnLoad.setOnClickListener(this);
+
         btnSaveAllSugar.setOnClickListener(this);
         btnSelectAllSugar.setOnClickListener(this);
         btnDeleteAllSugar.setOnClickListener(this);
+
         btnSaveAllRealm.setOnClickListener(this);
         btnSelectAllRealm.setOnClickListener(this);
         btnDeleteAllRealm.setOnClickListener(this);
+
         btnSaveAllRoom.setOnClickListener(this);
         btnSelectAllRoom.setOnClickListener(this);
         btnDeleteAllRoom.setOnClickListener(this);
+
+        btnSaveAllSQLite.setOnClickListener(this);
+        btnSelectAllSQLite.setOnClickListener(this);
+        btnDeleteAllSQLite.setOnClickListener(this);
     }
 
     @Override
@@ -125,6 +148,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnDeleteAllRoom:
                 execute(this::deleteAllRoom);
+                break;
+            case R.id.btnSaveAllSQLite:
+                execute(this::saveSQLite);
+                break;
+            case R.id.btnSelectAllSQLite:
+                execute(this::getAllSQLite);
+                break;
+            case R.id.btnDeleteAllSQLite:
+                execute(this::deleteAllSQLite);
                 break;
         }
     }
@@ -345,6 +377,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Date first = new Date();
         int size = userDao.deleteAll();
+        Date second = new Date();
+        Bundle bundle = new Bundle();
+        bundle.putInt(EXT_COUNT, size);
+        bundle.putLong(EXT_TIME, second.getTime() - first.getTime());
+        return bundle;
+    }
+
+    private Bundle saveSQLite() {
+        DBHelper helper = new DBHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        Date first = new Date();
+        UserEntityMapper.saveAll(db, modelList);
+        Date second = new Date();
+
+        List<SQLiteModel> tempList = UserEntityMapper.getAll(db);
+
+        Bundle bundle = new Bundle();
+        bundle.putInt(EXT_COUNT, tempList.size());
+        bundle.putLong(EXT_TIME, second.getTime() - first.getTime());
+        return bundle;
+    }
+
+    private Bundle getAllSQLite() {
+        DBHelper helper = new DBHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        Date first = new Date();
+        List<SQLiteModel> tempList = UserEntityMapper.getAll(db);
+
+        Date second = new Date();
+        Bundle bundle = new Bundle();
+        bundle.putInt(EXT_COUNT, tempList.size());
+        bundle.putLong(EXT_TIME, second.getTime() - first.getTime());
+        return bundle;
+    }
+
+    private Bundle deleteAllSQLite() {
+        DBHelper helper = new DBHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        Date first = new Date();
+        int size = UserEntityMapper.clear(db);
+        
         Date second = new Date();
         Bundle bundle = new Bundle();
         bundle.putInt(EXT_COUNT, size);

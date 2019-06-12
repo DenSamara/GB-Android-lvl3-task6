@@ -22,11 +22,11 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnLoad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Загрузить из интернета" />
+                android:text="@string/load_data" />
         </LinearLayout>
 
         <LinearLayout
@@ -51,23 +51,23 @@
                     android:layout_height="wrap_content"
                     android:text="SugarORM" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnSaveAllSugar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Сохранить в БД" />
+                    android:text="@string/save_to_db" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnSelectAllSugar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Показать все" />
+                    android:text="@string/show_all" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnDeleteAllSugar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Удалить все" />
+                    android:text="@string/remove_all" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -75,23 +75,23 @@
                     android:layout_marginTop="8dp"
                     android:text="Realm" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnSaveAllRealm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Сохранить в БД" />
+                    android:text="@string/save_to_db" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnSelectAllRealm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Показать все" />
+                    android:text="@string/show_all" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnDeleteAllRealm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Удалить все" />
+                    android:text="@string/remove_all" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -99,23 +99,47 @@
                     android:layout_marginTop="8dp"
                     android:text="Room" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnSaveAllRoom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Сохранить в БД" />
+                    android:text="@string/save_to_db" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnSelectAllRoom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Показать все" />
+                    android:text="@string/show_all" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnDeleteAllRoom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Удалить все" />
+                    android:text="@string/remove_all" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="SQLite" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSaveAllSQLite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save_to_db" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSelectAllSQLite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/show_all" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDeleteAllSQLite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/remove_all" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
