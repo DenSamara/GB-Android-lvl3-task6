@@ -1,7 +1,9 @@
 package lesson5.rumpilstilstkin.ru.databaseex;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
+import android.database.sqlite.SQLiteDatabase;
+
+import androidx.room.Room;
 
 import com.orm.SugarContext;
 
@@ -10,6 +12,7 @@ import io.realm.RealmConfiguration;
 
 public class MainApp extends Application {
     private static AppDatabase db;
+    private static SQLiteDatabase sqLiteDatabase;
 
     @Override
     public void onCreate() {
@@ -26,10 +29,16 @@ public class MainApp extends Application {
 
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "database").build();
+
+        sqLiteDatabase = new DBHelper(getApplicationContext()).getWritableDatabase();
     }
 
     public static AppDatabase getDb(){
         return db;
+    }
+
+    public static SQLiteDatabase getSqLiteDatabase(){
+        return sqLiteDatabase;
     }
 }
 
