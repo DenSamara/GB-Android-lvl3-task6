@@ -420,7 +420,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Date first = new Date();
         int size = UserEntityMapper.clear(db);
-        
+
         Date second = new Date();
         Bundle bundle = new Bundle();
         bundle.putInt(EXT_COUNT, size);
